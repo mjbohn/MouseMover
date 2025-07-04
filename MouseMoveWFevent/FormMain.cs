@@ -12,8 +12,8 @@ public partial class FormMain : Form
     private NativeMethods.LowLevelMouseProc mouseProc;
 
     private string _status_watch = "watching mouse moves...";
-    private string _status_sim = "simulating mouse move...";
-    private string _status_move_detected = "mouse move detected: ";
+    private string _status_sim = "simulating mouse move";
+    private string _status_move_detected = "mouse move detected:";
 
     public FormMain()
     {
@@ -44,7 +44,7 @@ public partial class FormMain : Form
 
             lblStatus.Invoke((MethodInvoker)(() =>
             {
-                lblLastMove.Text = $"{_status_move_detected} {DateTime.Now:T}";
+                lblLastMove.Text = $"{_status_move_detected}    {DateTime.Now:T}";
 
             }));
 
@@ -55,7 +55,7 @@ public partial class FormMain : Form
 
     private void SimulateMouseMove()
     {
-        lblStatus.Text = $"{_status_sim} {DateTime.Now:T}";
+        lblStatus.Text = $"{_status_sim}  {DateTime.Now:T}";
 
         NativeMethods.INPUT[] input = new NativeMethods.INPUT[2];
         input[0] = new NativeMethods.INPUT

@@ -77,13 +77,15 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(185, 110);
+            ClientSize = new Size(234, 111);
             Controls.Add(lblWaitTime);
             Controls.Add(numericUpDownwaitTime);
             Controls.Add(lblLastMove);
             Controls.Add(lblStatus);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             MaximizeBox = false;
             Name = "FormMain";
+            ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MouseMove";
             FormClosed += FormMain_FormClosed;
