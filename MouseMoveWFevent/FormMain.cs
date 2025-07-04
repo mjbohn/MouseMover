@@ -112,7 +112,7 @@ public partial class FormMain : Form
         {
             this.Hide();
             e.Cancel = true;
-            trayIcon.ShowBalloonTip(3000,"MousMover","use context menu to exit",ToolTipIcon.Info);
+            trayIcon.ShowBalloonTip(3000,"MouseMover is still running!","use context menu to exit",ToolTipIcon.Info);
         }
     }
 }
