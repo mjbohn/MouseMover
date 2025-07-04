@@ -14,10 +14,18 @@ public partial class FormMain : Form
     private string _status_watch = "watching mouse moves...";
     private string _status_sim = "simulating mouse move";
     private string _status_move_detected = "mouse move detected:";
+    private bool _reallyCloseThis = false;
 
     public FormMain()
     {
         InitializeComponent();
+
+        trayIcon.Icon = SystemIcons.Application;
+        trayIcon.ContextMenuStrip = trayMenu;
+        trayIcon.Text = "MousMover";
+        trayIcon.Visible = true;
+
+        this.ShowInTaskbar = false;
 
         inactivityTimer = new Timer();
         inactivityTimer.Interval = (int)numericUpDownwaitTime.Value * 1000;
@@ -80,6 +88,32 @@ public partial class FormMain : Form
     private void numericUpDownwaitTime_ValueChanged(object sender, EventArgs e)
     {
         inactivityTimer.Interval = (int)numericUpDownwaitTime.Value * 1000;
+    }
+
+    private void showToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        this.Show();
+    }
+
+    private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        _reallyCloseThis = true;
+        Application.Exit();
+    }
+
+    private void trayIcon_DoubleClick(object sender, EventArgs e)
+    {
+        this.Show();
+    }
+
+    private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        if (!_reallyCloseThis)
+        {
+            this.Hide();
+            e.Cancel = true;
+            trayIcon.ShowBalloonTip(3000,"MousMover","use context menu to exit",ToolTipIcon.Info);
+        }
     }
 }
 

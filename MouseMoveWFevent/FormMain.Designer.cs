@@ -28,11 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lblStatus = new Label();
             lblLastMove = new Label();
             numericUpDownwaitTime = new NumericUpDown();
             lblWaitTime = new Label();
+            trayIcon = new NotifyIcon(components);
+            trayMenu = new ContextMenuStrip(components);
+            showToolStripMenuItem = new ToolStripMenuItem();
+            exitToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)numericUpDownwaitTime).BeginInit();
+            trayMenu.SuspendLayout();
             SuspendLayout();
             // 
             // lblStatus
@@ -73,6 +79,32 @@
             lblWaitTime.TabIndex = 3;
             lblWaitTime.Text = "wait sec";
             // 
+            // trayIcon
+            // 
+            trayIcon.Text = "notifyIcon1";
+            trayIcon.Visible = true;
+            trayIcon.DoubleClick += trayIcon_DoubleClick;
+            // 
+            // trayMenu
+            // 
+            trayMenu.Items.AddRange(new ToolStripItem[] { showToolStripMenuItem, exitToolStripMenuItem });
+            trayMenu.Name = "trayMenu";
+            trayMenu.Size = new Size(103, 48);
+            // 
+            // showToolStripMenuItem
+            // 
+            showToolStripMenuItem.Name = "showToolStripMenuItem";
+            showToolStripMenuItem.Size = new Size(102, 22);
+            showToolStripMenuItem.Text = "show";
+            showToolStripMenuItem.Click += showToolStripMenuItem_Click;
+            // 
+            // exitToolStripMenuItem
+            // 
+            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            exitToolStripMenuItem.Size = new Size(102, 22);
+            exitToolStripMenuItem.Text = "exit";
+            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -88,8 +120,10 @@
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MouseMove";
+            FormClosing += FormMain_FormClosing;
             FormClosed += FormMain_FormClosed;
             ((System.ComponentModel.ISupportInitialize)numericUpDownwaitTime).EndInit();
+            trayMenu.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -100,5 +134,9 @@
         private Label lblLastMove;
         private NumericUpDown numericUpDownwaitTime;
         private Label lblWaitTime;
+        private NotifyIcon trayIcon;
+        private ContextMenuStrip trayMenu;
+        private ToolStripMenuItem showToolStripMenuItem;
+        private ToolStripMenuItem exitToolStripMenuItem;
     }
 }
