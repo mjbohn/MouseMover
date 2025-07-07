@@ -20,7 +20,7 @@ public partial class FormMain : Form
     {
         InitializeComponent();
 
-        trayIcon.Icon = SystemIcons.Application;
+        //trayIcon.Icon = SystemIcons.Application;
         trayIcon.ContextMenuStrip = trayMenu;
         trayIcon.Text = "MousMover";
         trayIcon.Visible = true;

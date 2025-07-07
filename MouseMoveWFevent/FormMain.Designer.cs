@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             lblStatus = new Label();
             lblLastMove = new Label();
             numericUpDownwaitTime = new NumericUpDown();
@@ -81,6 +82,7 @@
             // 
             // trayIcon
             // 
+            trayIcon.Icon = (Icon)resources.GetObject("trayIcon.Icon");
             trayIcon.Text = "notifyIcon1";
             trayIcon.Visible = true;
             trayIcon.DoubleClick += trayIcon_DoubleClick;
