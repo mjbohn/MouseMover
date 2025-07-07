@@ -1,0 +1,27 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - r*
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release-Tag (z. B. v1.2.3)'
+        required: true
+        type: string
+      branch:
+        description: 'Branch (optional, Standard: master)'
+        required: false
+        default: 'master'
+        type: string
+
+jobs:
+  call-reusable:
+    uses: mjbohn/GithubWorkflows/.github/workflows/dotnet-build-and-release-win.yml@main
+    with:
+      tag: ${{ inputs.tag }}
+      project_path: 'MouseMoveWFevent'
+      zip_name: 'MouseMover.zip'
+      configuration: 'Release'
+      branch: ${{ inputs.branch }}
