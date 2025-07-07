@@ -11,8 +11,8 @@ public partial class FormMain : Form
     private IntPtr hookId = IntPtr.Zero;
     private NativeMethods.LowLevelMouseProc mouseProc;
 
-    private string _status_watch = "watching mouse moves...";
-    private string _status_sim = "simulating mouse move";
+    private string _status_watch         = "watching mouse moves...";
+    private string _status_sim           = "last simulated move:";
     private string _status_move_detected = "mouse move detected:";
     private bool _reallyCloseThis = false;
 
